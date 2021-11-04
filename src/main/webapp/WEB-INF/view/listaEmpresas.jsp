@@ -11,14 +11,11 @@
 <title>Lista de Empresas</title>
 </head>
 <body>
-	<%
-		HttpSession sessao = request.getSession();
-		String nomeEmpresa = sessao.getAttribute("nomeEmpresa") == null ? null : sessao.getAttribute("nomeEmpresa").toString();
-	%>
+	Usuário <strong>${usuarioLogado.login}</strong> logado. <br>
 
 	<c:if test="${not empty nomeEmpresa}">
 			Empresa <strong>${nomeEmpresa}</strong> cadastrada com sucesso! <br>
-			<% request.getSession().invalidate(); %>
+			<% request.getSession().removeAttribute("nomeEmpresa");	%>
 	</c:if>
 
 	<br>
@@ -40,6 +37,7 @@
 			</li>
 		</c:forEach>
 	</ul>
+	<c:import url="logout-parcial.jsp"/>
 
 </body>
 </html>

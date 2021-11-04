@@ -22,7 +22,7 @@ public class GravarNovaEmpresaNoBanco implements Acao {
 		String nomeEmpresa = request.getParameter("nome");
 		String dataCriacao = request.getParameter("data");
 		
-		if(!nomeEmpresa.isEmpty() || !dataCriacao.isEmpty()) { //se as entradas forem null, apenas exibe a lista
+		if(!nomeEmpresa.isEmpty() && !dataCriacao.isEmpty()) { //se as entradas forem null, apenas exibe a lista
 		
 			Date dataCriacaoFormatada = null;
 			

@@ -26,5 +26,6 @@
 			<input type="submit" value="Enviar">
 		</form>
 	</c:if>
+	<c:import url="logout-parcial.jsp"/>
 </body>
 </html>
