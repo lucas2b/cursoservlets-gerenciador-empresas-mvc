@@ -30,19 +30,17 @@ public class FrontControllerServlet extends HttpServlet {
 		String nomeJspComTipoRedirecionamento = null;
 		
 		//Padrão de projeto Command utilizando reflection + interface
-		
 		String nomeClasse = "br.com.alura.gerenciador.controller." + acaoParam;
-		System.out.println(nomeClasse);
 		
-		//Login
-		HttpSession sessao = request.getSession();
-		boolean usuarioNaoLogado = sessao.getAttribute("usuarioLogado") == null;
-		boolean paginaProtegida = !(acaoParam.equals("LoginForm") || acaoParam.equals("Login"));
-		
-		if(usuarioNaoLogado && paginaProtegida) {
-			response.sendRedirect("frontController?acao=LoginForm");
-			return;
-		}
+//		//Login (migrado para Filter)
+//		HttpSession sessao = request.getSession();
+//		boolean usuarioNaoLogado = sessao.getAttribute("usuarioLogado") == null;
+//		boolean paginaProtegida = !(acaoParam.equals("LoginForm") || acaoParam.equals("Login"));
+//		
+//		if(usuarioNaoLogado && paginaProtegida) {
+//			response.sendRedirect("frontController?acao=LoginForm");
+//			return;
+//		}
 		
 		try {
 			
