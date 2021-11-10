@@ -29,7 +29,7 @@ public class FrontControllerServlet extends HttpServlet {
 		String acaoParam = request.getParameter("acao");
 		String nomeJspComTipoRedirecionamento = null;
 		
-		//Padrão de projeto Command utilizando reflection + interface
+		//Padrao de projeto Command utilizando reflection + interface
 		String nomeClasse = "br.com.alura.gerenciador.controller." + acaoParam;
 		
 //		//Login (migrado para Filter)
@@ -54,7 +54,7 @@ public class FrontControllerServlet extends HttpServlet {
 		}
 		
 		
-		//Trecho substituído pelo padrão de projeto Command
+		//Trecho substituido pelo padrao de projeto Command
 //		if(acao.equals("ExibirCadastrarNovaEmpresa")) {
 //			ExibirCadastrarNovaEmpresa exbCadNovEmp = new ExibirCadastrarNovaEmpresa();
 //			nomeJspComRedirecionamento= exbCadNovEmp.execute(request, response);
@@ -86,14 +86,14 @@ public class FrontControllerServlet extends HttpServlet {
 		//------ View Resolver
 		
 		String[] jspETipoRedirect = nomeJspComTipoRedirecionamento.split(":");
-		String tipoRedirect = jspETipoRedirect[0]; //define se é um forward (RequestDispatcher) ou um redirect (redirecionamento por navegador)
+		String tipoRedirect = jspETipoRedirect[0]; //define se ï¿½ um forward (RequestDispatcher) ou um redirect (redirecionamento por navegador)
 		String jspResolvido = jspETipoRedirect[1]; //nome final do JSP
 		
 		if(tipoRedirect.equals("forward")) {
-			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + jspResolvido); //único caminho que acessa os JSP
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + jspResolvido); //unico caminho que acessa os JSP
 			rd.forward(request, response);
 		}else if (tipoRedirect.equals("redirect")) {
-			response.sendRedirect(jspResolvido); //não retorna um JSP, retorna a requisição novamente para o servlet apontando a ação que busca o JSP
+			response.sendRedirect(jspResolvido); //nao retorna um JSP, retorna a requisicao novamente para o servlet apontando a aï¿½ï¿½o que busca o JSP
 		}
 		
 		

@@ -25,20 +25,28 @@ public class EmpresasService extends HttpServlet {
 		
 		List<Empresa> listaEmpresas = banco.listaDeEmpresas();
 		
-		XStream xstream = new XStream();
-		xstream.alias("empresa", Empresa.class);
+		String contentType = request.getHeader("accept");
+
+		if(contentType.endsWith("json")) {
+
+			Gson gson = new Gson();
+			String json = gson.toJson(listaEmpresas);
+			
+			response.setContentType("application/json");
+			response.getWriter().print(json);
 		
-		String xml = xstream.toXML(listaEmpresas);
-		
-		response.setContentType("application/xml");
-		response.getWriter().print(xml);
-		
-//		Gson gson = new Gson();
-//		String listaEmpresasJson = gson.toJson(listaEmpresas);
-//		
-//		response.setContentType("application/json");
-//		PrintWriter writer = response.getWriter();
-//		writer.print(listaEmpresasJson);
+		}else if(contentType.endsWith("xmls")) {
+
+			XStream xstream = new XStream();
+			xstream.alias("empresa", Empresa.class);
+
+			String xml = xstream.toXML(listaEmpresas);		
+			response.setContentType("application/xml");
+			response.getWriter().print(xml);
+			
+		}else {
+			response.getWriter().print("Nenhum formato informado.");
+		}			
 	}
 
 }

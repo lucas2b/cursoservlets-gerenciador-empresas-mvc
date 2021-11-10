@@ -19,7 +19,7 @@ public class TempoAcaoFilter implements Filter {
 		
 		Long fim = System.currentTimeMillis();
 		
-		System.out.println("Ação "+request.getParameter("acao") + " executada em " + (fim-inicio) + " milissegundos.");
+		System.out.println("Acaoo "+request.getParameter("acao") + " executada em " + (fim-inicio) + " milissegundos.");
 	}
 
 
