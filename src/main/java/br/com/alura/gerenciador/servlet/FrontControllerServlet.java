@@ -30,7 +30,7 @@ public class FrontControllerServlet extends HttpServlet {
 		String nomeJspComTipoRedirecionamento = null;
 		
 		//Padrao de projeto Command utilizando reflection + interface
-		String nomeClasse = "br.com.alura.gerenciador.controller." + acaoParam;
+		String nomeClasse = "br.com.alura.gerenciador.controller." + acaoParam; //full qualified name da classe
 		
 //		//Login (migrado para Filter)
 //		HttpSession sessao = request.getSession();
@@ -86,14 +86,14 @@ public class FrontControllerServlet extends HttpServlet {
 		//------ View Resolver
 		
 		String[] jspETipoRedirect = nomeJspComTipoRedirecionamento.split(":");
-		String tipoRedirect = jspETipoRedirect[0]; //define se � um forward (RequestDispatcher) ou um redirect (redirecionamento por navegador)
+		String tipoRedirect = jspETipoRedirect[0]; //define se eh um forward (RequestDispatcher) ou um redirect (redirecionamento por navegador)
 		String jspResolvido = jspETipoRedirect[1]; //nome final do JSP
 		
 		if(tipoRedirect.equals("forward")) {
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + jspResolvido); //unico caminho que acessa os JSP
 			rd.forward(request, response);
 		}else if (tipoRedirect.equals("redirect")) {
-			response.sendRedirect(jspResolvido); //nao retorna um JSP, retorna a requisicao novamente para o servlet apontando a a��o que busca o JSP
+			response.sendRedirect(jspResolvido); //nao retorna um JSP, retorna a requisicao novamente para o servlet apontando a acaoo que busca o JSP
 		}
 		
 		
